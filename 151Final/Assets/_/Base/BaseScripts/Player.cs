@@ -9,11 +9,13 @@
                unitycodemonkey.com
     --------------------------------------------------
  */
-
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 using V_AnimationSystem;
 using CodeMonkey.Utils;
+using UnityOSC;
 
 /*
  * Simple Jump
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour {
     private BoxCollider2D boxCollider2d;
     private bool waitForStart;
     private bool isDead;
+    Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog> ();
 
     private void Awake() {
         instance = this;
@@ -36,6 +39,11 @@ public class Player : MonoBehaviour {
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
         waitForStart = true;
         isDead = false;
+        		Application.runInBackground = true; //allows unity to update when not in focus
+
+		//************* Instantiate the OSC Handler...
+	    OSCHandler.Instance.Init ();
+        OSCHandler.Instance.SendMessageToClient("pd", "/unity/music", 1);
     }
 
     private void Update() {
@@ -49,6 +57,7 @@ public class Player : MonoBehaviour {
             if (IsGrounded() && Input.GetKeyDown(KeyCode.Space)) {
                 float jumpVelocity = 100f;
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
+                OSCHandler.Instance.SendMessageToClient("pd", "/unity/jump", 1);
             }
 
             HandleMovement();

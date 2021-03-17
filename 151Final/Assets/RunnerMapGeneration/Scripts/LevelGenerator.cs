@@ -1,18 +1,9 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
 
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityOSC;
 
 public class LevelGenerator : MonoBehaviour {
 
@@ -21,6 +12,8 @@ public class LevelGenerator : MonoBehaviour {
     [SerializeField] private Transform levelPart_Start;
     [SerializeField] private List<Transform> levelPartList;
     [SerializeField] private Player player;
+    Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog> ();
+    
 
     private Vector3 lastEndPosition;
 
@@ -31,12 +24,16 @@ public class LevelGenerator : MonoBehaviour {
         for (int i = 0; i < startingSpawnLevelParts; i++) {
             SpawnLevelPart();
         }
+        //OSCHandler.Instance.Init ();
     }
 
     private void Update() {
         if (Vector3.Distance(player.GetPosition(), lastEndPosition) < PLAYER_DISTANCE_SPAWN_LEVEL_PART) {
             // Spawn another level part
             SpawnLevelPart();
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/tempo_main", 125);
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/tempo_back", 1000);
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/tempo_kick", 250);
         }
     }
 
