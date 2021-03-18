@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
     private bool waitForStart;
     private bool isDead;
     Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog> ();
+    List<OSCPacket> packets = new List<OSCPacket>();
 
     private void Awake() {
         instance = this;
@@ -39,10 +40,11 @@ public class Player : MonoBehaviour {
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
         waitForStart = true;
         isDead = false;
-        		Application.runInBackground = true; //allows unity to update when not in focus
+        Application.runInBackground = true; //allows unity to update when not in focus
 
 		//************* Instantiate the OSC Handler...
 	    OSCHandler.Instance.Init ();
+        //OSCReciever.Open(8001);
         OSCHandler.Instance.SendMessageToClient("pd", "/unity/music", 1);
     }
 
@@ -73,6 +75,21 @@ public class Player : MonoBehaviour {
                 playerBase.PlayJumpAnim(rigidbody2d.velocity);
             }
         }
+        //OSCHandler.Instance.OnPacketReceived("unity", packets);
+        OSCHandler.Instance.UpdateLogs();
+        //Debug.Log(OSCHandler.Instance.packets);
+        //OSCReciever.getNextMessage();
+        Dictionary<string, ClientLog> clients = new Dictionary<string, ClientLog>();
+        clients = OSCHandler.Instance.Clients;
+        Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog>();
+        servers = OSCHandler.Instance.Servers;
+
+        //Debug.Log(servers);
+
+        foreach (KeyValuePair<string, ServerLog> author in servers)  
+        {  
+            Debug.Log(author.Value);
+        }  
     }
 
     private bool IsGrounded() {
