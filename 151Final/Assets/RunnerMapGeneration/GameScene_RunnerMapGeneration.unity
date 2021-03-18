@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pfCoin (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
+      propertyPath: m_TagString
+      value: Coins
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
 --- !u!4 &69836694 stripped
@@ -380,6 +384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pfCoin (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
+      propertyPath: m_TagString
+      value: Coins
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
 --- !u!4 &117960069 stripped
@@ -425,6 +433,8 @@ MonoBehaviour:
   - {fileID: 8254864224448821453, guid: d5b82d394dec7e544aa484077bbb465e, type: 3}
   - {fileID: 4447344894688336568, guid: c3cf082aa2fb35d42a168bcdb1b38d43, type: 3}
   player: {fileID: 1733350925}
+  tempo: 1
+  speed: 0
 --- !u!4 &304678984
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,6 +1254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pfCoin (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
+      propertyPath: m_TagString
+      value: Coins
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
 --- !u!4 &972155298 stripped
@@ -1305,6 +1319,10 @@ PrefabInstance:
     - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
       propertyPath: m_Name
       value: pfCoin (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
+      propertyPath: m_TagString
+      value: Coins
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
@@ -1608,6 +1626,10 @@ PrefabInstance:
     - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
       propertyPath: m_Name
       value: pfCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
+      propertyPath: m_TagString
+      value: Coins
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
@@ -2004,6 +2026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pfCoin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4286728792456260706, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
+      propertyPath: m_TagString
+      value: Coins
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e52a4be06a169949a229da3954ac490, type: 3}
 --- !u!4 &1562534199 stripped
@@ -2369,6 +2395,7 @@ MonoBehaviour:
   platformsLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  addSpeed: 0
 --- !u!4 &1733350926
 Transform:
   m_ObjectHideFlags: 0

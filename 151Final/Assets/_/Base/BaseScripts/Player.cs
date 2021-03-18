@@ -32,6 +32,7 @@ public class Player : MonoBehaviour {
     private bool isDead;
     Dictionary<string, ServerLog> servers = new Dictionary<string, ServerLog> ();
     List<OSCPacket> packets = new List<OSCPacket>();
+    public int addSpeed = 0;
 
     private void Awake() {
         instance = this;
@@ -61,8 +62,8 @@ public class Player : MonoBehaviour {
                 rigidbody2d.velocity = Vector2.up * jumpVelocity;
                 OSCHandler.Instance.SendMessageToClient("pd", "/unity/jump", 1);
             }
-
-            HandleMovement();
+            addSpeed = GameObject.Find("LevelGenerator").GetComponent<LevelGenerator>().speed;
+            HandleMovement(addSpeed);
 
             // Set Animations
             if (IsGrounded()) {
@@ -97,11 +98,10 @@ public class Player : MonoBehaviour {
         return raycastHit2d.collider != null;
     }
     
-    private void HandleMovement() {
-        float moveSpeed = 40f;
+    private void HandleMovement(float addSpeed) {
+        float moveSpeed = 40f + addSpeed;
         rigidbody2d.velocity = new Vector2(+moveSpeed, rigidbody2d.velocity.y);
     }
-
     public Vector3 GetPosition() {
         return transform.position;
     }

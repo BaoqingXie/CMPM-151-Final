@@ -27,7 +27,7 @@ public class Spikes : MonoBehaviour {
             OSCHandler.Instance.SendMessageToClient("pd", "/unity/death", 1);
             Player.Die_Static();
             OSCHandler.Instance.SendMessageToClient("pd", "/unity/music", 0);
+            OSCHandler.Instance.SendMessageToClient("pd", "/unity/stop_music", 9);
         }
     }
-
 }
